@@ -1,0 +1,198 @@
+﻿using System;
+
+public abstract class Network_manager
+{
+    private string device_name;
+    private int model_number;
+    private string ip_address;
+    private string status;
+    private string is_connect;
+    private string ping;
+
+
+    public Network_manager(string device_name, int model_number, string ip_address, string status, string is_connect, string ping)
+    {
+        this.device_name = device_name;
+        this.model_number = model_number;
+        this.ip_address = ip_address;
+        this.status = status;
+        this.is_connect = is_connect;
+        this.ping = ping;
+    }
+
+    public string get_device_name()
+    { return this.device_name; }
+    public int get_model_number()
+    { return this.model_number; }
+    public string get_ip_address()
+    { return this.ip_address; }
+    public string get_status()
+    { return this.status; }
+    public string get_is_connect()
+    { return this.is_connect; }
+    public string get_ping()
+    { return this.ping; }
+    abstract void configuration();
+}
+
+public class Work_station : public Network_manager
+{
+    private string operating_system;
+private float cpu_usage;
+private float ram_usage;
+private string mac_address;
+
+public Work_station(string operating_system, float cpu_usage, float ram_usage, string mac_address, string device_name, int model_number, string ip_address, string status, string is_connect, string ping): (device_name, model_number, ip_address, status, is_connect, ping)
+    {
+    this.operating_system = operating_system;
+    this.cpu_usage = cpu_usage;
+    this.ram_usage = ram_usage;
+    this.mac_address = mac_address;
+}
+
+public string get_operating_system()
+{ return this.operating_system; }
+public float get_cpu_usage()
+{ return this.cpu_usage; }
+public float get_ram_usage()
+{ return this.ram_usage; }
+public string get_mac_address()
+{ return this.mac_address; }
+
+override void configuration()
+{
+    if (get_device_name() == "workstation" || "work station" || "WORKSTATION" || "WORK STATION")
+    {
+        Console.WriteLine("Device currently connecting to SNMP is " + get_device_name() + "...");
+    }
+    else ()
+        {
+        Console.WriteLine("ERROR: Enter correct device name...");
+    }
+}
+}
+
+public class Router : public Network_manager
+{
+    private string snmp_version;
+private int no_interface;
+private List<string> routing_table;
+private string firmware;
+private List<string> ACL;
+
+public Router(string snmp_version, int no_interface, List<string> routing_table, string firmware, List<string> ACL, string device_name, int model_number, string ip_address, string status, string is_connect, string ping) : base(device_name, model_number, ip_address, status, is_connect, ping)
+    {
+    this.no_interface = no_interface;
+    this.routing_table = routing_table;
+    this.firmware = firmware;
+    this.ACL = ACL;
+    this.snmp_version = snmp_version;
+}
+
+public string get_snmp_version()
+{ return this.snmp_version; }
+public int get_no_interface()
+{ return this.no_interface; }
+public string get_routing_table()
+{ return this.routing_table; }
+public string get_firewall()
+{ return this.firewall; }
+public string get_ACL()
+{ return this.ACL; }
+    }
+
+    override void configuration()
+{
+    if (get_device_name() == "router" || "ROUTER" || "Router")
+    {
+        Console.WriteLine("Device currently connecting to SNMP is " + get_device_name() + "...");
+    }
+    else ()
+        {
+        Console.WriteLine("ERROR: Enter correct device name...");
+    }
+}
+}
+
+public class Hub : public Network_manager
+{
+    public Hub(string device_name) : (device_name) { }
+    override void configuration()
+    {
+        if (get_device_name() == "Hub" || "HUB" || "hub")
+        {
+            Console.WriteLine("Device can't be connected to SNMP...");
+        }
+        else ()
+        {
+            Console.WriteLine("ERROR: Enter correct device name...");
+        }
+    }
+}
+
+public class Switch : public Network_manager
+{
+    private int port_number;
+public Switch (string port_number, string device_name, int model_number, string ip_address, string status, string is_connect, string ping): (device_name, model_number, ip_address, status, is_connect, ping)
+    {
+    this.port_number = port_number;
+}
+
+public void get_port_number()
+{
+    return this.port_number;
+}
+override void configuration()
+{
+    if (get_device_name() == "Switch" || "SWITCH" || "switch")
+    {
+        Console.WriteLine("Device currently connecting to SNMP is " + get_device_name() + "...");
+    }
+    else ()
+        {
+        Console.WriteLine("ERROR: Enter correct device name...");
+    }
+}
+}
+
+public class Firewall : public Network_manager
+{
+    private string rule_set;
+private string default_action;
+private string wall_interface;
+private string vpn_enabled;
+private string logging_enabled;
+
+public Firewall (string rule_set, string default_action, string wall_interface, string vpn_enabled, string logging_enabled, string device_name, int model_number, string ip_address, string status, string is_connect, string ping): (device_name, model_number, ip_address, status, is_connect, ping)
+    {
+    this.rule_set = rule_set;
+    this.default_action = default_action;
+    this.wall_interface = wall_interface;
+    this.vpn_enabled = vpn_enabled;
+    this.logging_enabled = logging_enabled;
+}
+
+public void get_rule_set()
+{ return this.rule_set; }
+public void get_default_action()
+{ return thid.get_default; }
+public void get_wall_interface()
+{ return wall_interface; }
+public void get_vpn_enabled()
+{ return vpn_enabled; }
+public void get_logging_enabled()
+{ return get_logging_enabled; }
+
+override void configuration()
+{
+    if (get_device_name() == "Firewall" || "FIREWALL" || "firewall" || "FIRE WALL" || "Fire wall")
+    {
+        Console.WriteLine("Device currently connecting to SNMP is " + get_device_name() + "...");
+    }
+    else ()
+        {
+        Console.WriteLine("ERROR: Enter correct device name...");
+    }
+}
+
+}
